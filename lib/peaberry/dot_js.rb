@@ -22,7 +22,7 @@ module Peaberry
       status_code = body.empty? ? 204 : 200
       headers = {
         'Content-Length' => body.bytesize.to_s,
-        'Content-Type' => 'application/javascript',
+        'Content-Type' => 'text/javascript',
         'Access-Control-Allow-Origin' => '*'
       }
       [ status_code, headers, body.lines ]
