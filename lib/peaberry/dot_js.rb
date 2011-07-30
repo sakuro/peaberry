@@ -7,9 +7,9 @@ require 'sprockets'
 module Peaberry
   class DotJs
 
-    def initialize(options=nil)
+    def initialize
       @sprockets = Sprockets::Environment.new
-      dot_js_dir = File.expand_path(options && options[:root] ? options[:root] : '~/.js')
+      dot_js_dir = File.expand_path('~/.js')
       @sprockets.append_path(dot_js_dir)
     end
 
