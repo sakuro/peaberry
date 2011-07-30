@@ -19,12 +19,13 @@ module Peaberry
       files << @sprockets.find_asset('default.js')
       files << @sprockets.find_asset(request.path_info.sub(/^\//, ''))
       body = files.compact.map(&:to_s).join
+      status_code = body.empty? ? 204 : 200
       headers = {
         'Content-Length' => body.bytesize.to_s,
         'Content-Type' => 'application/javascript',
         'Access-Control-Allow-Origin' => '*'
       }
-      [ 200, headers, body.lines ]
+      [ status_code, headers, body.lines ]
     end
   end
 end
