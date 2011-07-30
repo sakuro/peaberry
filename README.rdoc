@@ -1,0 +1,7 @@
+= Peaberry
+
+== What is This
+
+Peaberry is a clone of the dotjs server(djsd).
+One advantage of Peaberry is that it can serve CoffeeScript(s).
+

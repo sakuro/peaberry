@@ -1,0 +1,12 @@
+#!/usr/bin/ruby
+# -*- encoding: UTF-8 -*-
+
+begin
+  require 'bundler/setup'
+rescue LoadError => e
+  # ignore
+end
+
+require 'peaberry'
+
+Rack::Server.start(:app => Peaberry::DotJs.new, :Port => 3131)
