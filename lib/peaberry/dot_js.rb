@@ -5,7 +5,7 @@ require 'coffee-script'
 require 'sprockets'
 
 module Peaberry
-  class DotJs < ::Rack::Server
+  class DotJs
 
     def initialize(options=nil)
       @sprockets = Sprockets::Environment.new
