@@ -18,14 +18,17 @@ module Peaberry
       files = []
       files << @sprockets.find_asset('default.js')
       files << @sprockets.find_asset(request.path_info.sub(/^\//, ''))
+
       body = "// dotjs is working! //\n" + files.compact.map(&:to_s).join
-      status_code = 200
       headers = {
         'Content-Length' => body.bytesize.to_s,
         'Content-Type' => 'text/javascript',
         'Access-Control-Allow-Origin' => '*'
       }
-      [ status_code, headers, body.lines ]
+      [ 200, headers, body.lines ]
+    rescue => e
+      logger.error(e.message)
+      [ 500, {}, [''] ]
     end
   end
 end
