@@ -5,3 +5,34 @@
 Peaberry is a clone of the dotjs server(djsd).
 One advantage of Peaberry is that it can serve CoffeeScript(s).
 
+== How to Install
+
+=== Browser Extension
+
+Install a dotjs extension for your browser.
+dotjs comes with a extension for Chrome.
+See README in dotjs for case of other browsers.
+
+=== Dotjs Daemon
+
+Stop djsd if one is running.
+
+ $ launchctl unload ~/Library/LaunchAgents/com.github.dotjs.plist
+
+You should also remove or rename this to avoid its startup on your logging in.
+
+Then run
+
+ $ peaberry install
+
+to deploy com.github.peaberry.plist.
+
+All should work as same as djsd did.
+
+== Tips
+
+Thanks to sprockets, you can split scripts into parts.
+
+For example, following ~/.js/default.coffee will include all scripts
+in ~/.js/default directory and will be served as default.js.
+ # require_tree ./default
