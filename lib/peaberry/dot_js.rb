@@ -26,9 +26,6 @@ module Peaberry
         'Access-Control-Allow-Origin' => '*'
       }
       [ 200, headers, body.lines ]
-    rescue => e
-      logger.error(e.message)
-      [ 500, {}, [''] ]
     end
   end
 end
