@@ -24,7 +24,9 @@ module Peaberry
       headers['Content-Length'] = body.bytesize.to_s
       headers['Content-Type'] = 'text/javascript'
       headers['Access-Control-Allow-Origin'] = '*'
-      [ 200, headers, body.lines ]
+      [ Rack::Utils.status_code(:ok), headers, body.lines ]
+    rescue => e
+      [ Rack::Utils.status_code(:internal_server_error), headers, [e.message]]
     end
   end
 end
