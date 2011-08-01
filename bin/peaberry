@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 # -*- encoding: UTF-8 -*-
 
+require 'rubygems'
 begin
   require 'bundler/setup'
 rescue LoadError => e
@@ -9,4 +10,10 @@ end
 
 require 'peaberry'
 
-Rack::Server.start(:app => Peaberry::DotJs.new, :Port => 3131)
+case ARGV.shift
+
+when 'install'
+  Peaberry::PlistInstaller.new.install
+else
+  Rack::Server.start(:app => Peaberry::DotJs.new, :Port => 3131)
+end
