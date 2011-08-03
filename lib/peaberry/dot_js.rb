@@ -33,8 +33,9 @@ module Peaberry
       end
 
       [ Rack::Utils.status_code(:ok), headers, body.lines ]
-    rescue => e
-      [ Rack::Utils.status_code(:internal_server_error), headers, [e.message]]
+    rescue ExecJS::ProgramError => e # CoffeeScript->JavaScript
+      @sprockets.send(:expire_index!)
+      raise e.class, e.message.sub(%r<^(\s+\(in) .*/(\.js/)>) { "#$1 #$2" }
     end
   end
 
