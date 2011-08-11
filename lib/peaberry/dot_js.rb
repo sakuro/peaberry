@@ -26,7 +26,7 @@ module Peaberry
 
       headers['Content-Length'] = body.bytesize.to_s
       headers['Content-Type'] = 'text/javascript'
-      origin = env['HTTP_ORIGIN']
+      origin = env['HTTP_ORIGIN'].to_s.split(/;\s+/)
       search = path.gsub('/','').gsub(/\.js$/,'') + '$'
       if origin && origin.length == 1 && path.length != 1 && origin[0].match(search)
         headers['Access-Control-Allow-Origin'] = origin[0]
