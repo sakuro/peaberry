@@ -11,7 +11,6 @@ end
 require 'peaberry'
 
 case ARGV.shift
-
 when 'install'
   Peaberry::PlistInstaller.new.install
 else
